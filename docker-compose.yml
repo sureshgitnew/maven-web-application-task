@@ -3,7 +3,5 @@ services:
   tomcat:
     build: .
     image: tomcatimage:${BUILD_ID}
-  tomcatcontainer:
-    image: tomcatimage:${BUILD_ID}
     ports:
       - 8542:8080

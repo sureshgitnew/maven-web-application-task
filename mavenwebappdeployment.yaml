@@ -20,10 +20,10 @@ spec:
         - name: mavenwebappcontainer
           ports:
             - containerPort: 8080
-          image: katikanaveenkumar/mavenwebappimage:{{ .Values.image }}
+          image: ${DOCKER_IMAGE}
           env:
            - name: IMAGE
-             value: "{{ .Values.imageTag }}"
+             value: "${DOCKER_IMAGE}"
 ---
 apiVersion: v1
 kind: Service

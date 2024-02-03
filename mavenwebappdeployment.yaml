@@ -22,8 +22,8 @@ spec:
             - containerPort: 8080
           image: ${DOCKER_IMAGE}
           env:
-           - name: IMAGE
-             value: "${DOCKER_IMAGE}"
+            - name: IMAGE
+              value: "${DOCKER_IMAGE}"
 ---
 apiVersion: v1
 kind: Service

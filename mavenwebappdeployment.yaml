@@ -20,7 +20,7 @@ spec:
         - name: mavenwebappcontainer
           ports:
             - containerPort: 8080
-          image: ${DOCKER_IMAGE}
+          image: "{{ .Values.IMAGE }}"
           env:
             - name: IMAGE
               value: "${DOCKER_IMAGE}"

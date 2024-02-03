@@ -21,6 +21,9 @@ spec:
           image: katikanaveenkumar/mavenwebappimage:${BUILD_ID}
           ports:
             - containerPort: 8080
+          env:
+            - name: IMAGE_TAG
+              value: "${BUILD_ID}"
 ---
 apiVersion: v1
 kind: Service

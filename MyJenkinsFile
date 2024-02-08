@@ -1,0 +1,56 @@
+pipeline {
+    agent any
+    environment {
+        DOCKER_IMAGE = "katikanaveenkumar/mavenwebappimages:${BUILD_ID}"
+    }
+    tools {
+        maven 'maven'
+    }
+    stages {
+        stage('Pull Code') {
+            steps {
+                git branch: 'master', url: 'https://github.com/katika-naveen-kumar/maven-web-application-task.git'
+            }
+        }
+
+        stage('Building the maven package') {
+            steps {
+                sh 'mvn clean package'
+            }
+        }
+
+        /*stage('Execute the Sonarqube Report') {
+            steps {
+                withCredentials([string(credentialsId: 'sonarqube_Token', variable: 'sonarqube_Token')]) {
+                    sh "mvn sonar:sonar -D sonar.host.url=${sonar_url} -D sonar.login=${sonarqube_Token}"
+                }
+            }
+        }*/
+
+        stage('Creating a Dockerfile') {
+            steps {
+                sh "docker build -t ${DOCKER_IMAGE} ."
+            }
+        }
+
+        stage('Pushing Docker Image to Docker Hub') {
+            steps {
+                withCredentials([string(credentialsId: 'Docker_Hub_Password', variable: 'Docker_Hub_Password')]) {
+                    sh "docker login -u katikanaveenkumar -p $Docker_Hub_Password"
+                }
+                sh "docker push ${DOCKER_IMAGE}"
+            }
+        }
+
+        stage('Creating a container') {
+            steps {
+                script {
+                    sh '''
+                    sed -i "s/tag/$BUILD_ID/g" mavenwebappdeployment.yaml
+                    kubectl apply -f mavenwebappdeployment.yaml 
+                    '''
+                }
+            }
+        }
+    }
+}

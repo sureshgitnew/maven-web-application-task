@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        DOCKER_IMAGE = "katikanaveenkumar/mavenwebappimages1:${BUILD_ID}"
+        DOCKER_IMAGE = "sureshdocker31/mavenwebappimages1:${BUILD_ID}"
     }
     tools {
         maven 'maven'
@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Pull Code') {
             steps {
-                git branch: 'master', url: 'https://github.com/katika-naveen-kumar/maven-web-application-task.git'
+                git branch: 'master', url: 'https://github.com/sureshgitnew/maven-web-application-task.git'
             }
         }
 
@@ -36,7 +36,7 @@ pipeline {
         stage('Pushing Docker Image to Docker Hub') {
             steps {
                 withCredentials([string(credentialsId: 'Docker_Hub_Password', variable: 'Docker_Hub_Password')]) {
-                    sh "docker login -u katikanaveenkumar -p $Docker_Hub_Password"
+                    sh "docker login -u sureshdocker31 -p $Docker_Hub_Password"
                 }
                 sh "docker push ${DOCKER_IMAGE}"
             }

@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: mavenwebappdeployment
 spec:
-  replicas: 2
+  replicas: 4
   strategy:
     type: Recreate
   selector:

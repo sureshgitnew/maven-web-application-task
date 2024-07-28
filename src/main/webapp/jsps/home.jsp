@@ -86,7 +86,7 @@
 </head>
 <body>
 <div class="container">
-    <h1>Login to Your Account</h1>
+    <h1>Login to Your Application</h1>
     <form action="login" method="post">
         <div class="form-group">
             <label for="username">Username:</label>

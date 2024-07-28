@@ -9,14 +9,24 @@
 <style>
     body {
         font-family: Arial, sans-serif;
+        background-color: #007bff; /* Blue background color */
+        color: #fff; /* White text color */
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
     }
     .container {
         width: 100%;
         max-width: 500px;
-        margin: 0 auto;
+        margin: 20px auto;
         padding: 20px;
         text-align: center;
-        border: 1px solid #ccc;
+        background: #fff;
+        color: #333; /* Text color inside the container */
         border-radius: 5px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
@@ -52,6 +62,26 @@
     .reset {
         background-color: #f44336;
     }
+    hr {
+        border: 1px solid #fff;
+        width: 100%;
+        margin: 20px 0;
+    }
+    .highlight-section {
+        text-align: center;
+        background: #007bff;
+        color: #fff;
+        padding: 20px;
+        margin-top: 20px;
+        border-radius: 5px;
+    }
+    a {
+        color: #2196F3;
+        text-decoration: none;
+    }
+    a:hover {
+        text-decoration: underline;
+    }
 </style>
 </head>
 <body>
@@ -71,9 +101,7 @@
     <button class="reset" onclick="location.href='resetPassword.jsp'">Reset Password</button>
 </div>
 
-<hr>
-
-<div style="text-align: center;">
+<div class="highlight-section">
     <h2>Maven Web Application Highlights</h2>
     <br>
     <h3>Server Side IP Address</h3>

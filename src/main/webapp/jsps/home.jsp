@@ -102,7 +102,7 @@
 </div>
 
 <div class="highlight-section">
-    <h2>Maven Web Application Highlights</h2>
+    <h2>Maven Web Application for Project</h2>
     <br>
     <h3>Server Side IP Address</h3>
     <p>
